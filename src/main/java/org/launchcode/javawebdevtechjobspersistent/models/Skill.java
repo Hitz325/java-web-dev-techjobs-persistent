@@ -8,7 +8,6 @@ import javax.validation.constraints.Size;
 @Entity
 public class Skill extends AbstractEntity {
 
-    @NotBlank
     @Size(min = 0, max = 300)
     private String description;
 

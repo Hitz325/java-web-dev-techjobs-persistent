@@ -2,12 +2,11 @@ package org.launchcode.javawebdevtechjobspersistent.models;
 
 import jdk.jfr.DataAmount;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Employer extends AbstractEntity {
@@ -15,8 +14,9 @@ public class Employer extends AbstractEntity {
     @Size(min = 3, max = 150, message = "location must be between 3 and 150 characters long")
     private String location;
 
-//    @ManyToOne
-//    private Employer employer;
+    @OneToMany
+    @JoinColumn
+    private List<Job> jobs = new ArrayList();
 
     public Employer(){}
 
@@ -24,8 +24,7 @@ public class Employer extends AbstractEntity {
         return location;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocation(String location) {this.location = location;
     }
 
 }
